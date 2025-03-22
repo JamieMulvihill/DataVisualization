@@ -22,9 +22,35 @@ for i in range(len(iris['sepal_length'])):
     #ax.scatter(iris['sepal_length'][i], iris['sepal_width'][i])
     ax.scatter(iris['sepal_length'][i], iris['sepal_width'][i], color=colors[iris['iris_Species'][i]])
 
-#set a title and label
+# set a title and label
 ax.set_title('Iris Dataset')
 ax.set_xlabel('sepal_length')
 ax.set_ylabel('sepal_width')
+
+columns = iris.columns.drop(['iris_Species'])
+
+# create x data
+x_data = range(0, iris.shape[0])
+
+# create figure and axis
+fig2, ax2 = plt.subplots()
+
+# plot each column
+for column in columns:
+    ax2.plot(x_data, iris[column], label=column)
+
+ax2.set_title('Iris Dataset')
+ax2.legend()
+
+# create figure and axis
+fig3, ax3 = plt.subplots()
+
+# plot histogram
+ax3.hist(wine_reviews['points'])
+
+# set title and labels
+ax3.set_title('Wine Review Scores')
+ax3.set_xlabel('Points')
+ax3.set_ylabel('Frequency')
 
 plt.show()
